@@ -113,6 +113,7 @@ const companyName = ref('Абрис')
 
 .hero-logo {
   width: 100px;
+  margin: 20px 0;
 }
 
 </style>
