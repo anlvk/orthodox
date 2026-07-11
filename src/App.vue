@@ -1,6 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
+// 1. ИМПОРТИРУЕМ ИЗОБРАЖЕНИЕ: Сборщик Vite сам подставит правильный путь при сборке проекта
+import bgLogo from './assets/abris-logo.jpg'
+import logoImg from './assets/abris-logo.jpg' 
+
 const companyName = ref('Абрис')
 </script>
 
@@ -18,7 +22,10 @@ const companyName = ref('Абрис')
 
     <!-- Общий баннер (Hero) -->
     <section class="hero">
-      <h1>{{ companyName }}</h1>
+      <!-- <h1>{{ companyName }}</h1> -->
+      <div class="logo-wrapper">
+        <img :src="logoImg" alt="Логотип АБРИС" class="hero-logo">
+      </div>
       <p>Изготовление икон и роспись храмов</p>
     </section>
 
@@ -103,4 +110,9 @@ const companyName = ref('Абрис')
 @media (max-width: 768px) {
   .hero h1 { font-size: 2.2rem; }
 }
+
+.hero-logo {
+  width: 100px;
+}
+
 </style>

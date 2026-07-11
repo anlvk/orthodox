@@ -117,7 +117,6 @@ const activeProduct = computed(() => {
             <div class="tab-text">
             <h3>{{ activeProduct.title }}</h3>
             <p>{{ activeProduct.description }}</p>
-            <a href="mailto:naleks-art@yandex.ru" class="read-more">ОСТАВИТЬ ЗАЯВКУ ↗</a>
             </div>
         </div>
         </transition>
