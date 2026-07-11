@@ -1,0 +1,106 @@
+<script setup>
+import { ref } from 'vue'
+
+const companyName = ref('Абрис')
+</script>
+
+<template>
+  <div>
+    <!-- Общая шапка сайта -->
+    <header class="header">
+      <nav class="nav-links">
+        <router-link to="/">Продукция</router-link>
+        <router-link to="/about">О мастерской</router-link>
+        <router-link to="/contacts">Контакты</router-link> 
+      </nav>
+      <a href="tel:+375447286426" class="btn-book">Позвонить мастерам</a>
+    </header>
+
+    <!-- Общий баннер (Hero) -->
+    <section class="hero">
+      <h1>{{ companyName }}</h1>
+      <p>Изготовление икон и роспись храмов</p>
+    </section>
+
+    <!-- Сюда динамически загружаются компоненты страниц (HomeView или AboutView) -->
+    <main>
+      <router-view></router-view>
+    </main>
+  </div>
+</template>
+
+<style scoped>
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+/* Специфический класс Vue Router для активной в данный момент ссылки */
+.nav-links .router-link-active {
+  border-bottom-color: var(--white);
+}
+
+.btn-book {
+  background-color: var(--accent-green);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-book:hover {
+  background-color: #2b3a2a;
+}
+
+.hero {
+  position: relative;
+  height: 50vh;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://unsplash.com') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  letter-spacing: 6px;
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+}
+</style>
