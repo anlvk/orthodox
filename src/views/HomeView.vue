@@ -19,26 +19,31 @@ const closeLightbox = () => {
     document.body.style.overflow = ''
 }
 
-// 1. Автоматический импорт всех картинок из папки soligorsk
+// Функция-помощник для превращения объекта импорта в SEO-массив
+const formatImagesForSEO = (imagesObject) => 
+  Object.entries(imagesObject).map(([path, url]) => {
+    const fileName = path.split('/').pop().replace(/\.[^/.]+$/, '');
+    const formattedAlt = fileName
+      .replace(/[-_]/g, ' ')
+      .replace(/^\w/, (c) => c.toUpperCase());
+
+    return { url, alt: formattedAlt };
+  });
+
+// 1. Импорт и создание списка для Soligorsk
 const soligorskImagesObject = import.meta.glob(
   '../assets/soligorsk/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}', 
   { eager: true, import: 'default' }
-)
+);
+const soligorskImagesList = formatImagesForSEO(soligorskImagesObject);
 
-// 2. Превращаем в массив объектов { url, alt } для правильного SEO
-const soligorskImagesList = Object.entries(soligorskImagesObject).map(([path, url]) => {
-  // Вытаскиваем имя файла без расширения
-  const fileName = path.split('/').pop().replace(/\.[^/.]+$/, '')
-  // Заменяем дефисы на пробелы и делаем первую букву заглавной
-  const formattedAlt = fileName
-    .replace(/[-_]/g, ' ')
-    .replace(/^\w/, (c) => c.toUpperCase())
+// 2. Импорт и создание списка для Icons
+const iconsObject = import.meta.glob(
+  '../assets/icons/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}', 
+  { eager: true, import: 'default' }
+);
+const iconsList = formatImagesForSEO(iconsObject);
 
-  return {
-    url: url,      // Ссылка на картинку
-    alt: formattedAlt // Уникальный текст для SEO
-  }
-})
 
 const productsList = ref([
     {
@@ -53,7 +58,7 @@ const productsList = ref([
     tabName: 'Иконы',
     title: 'Проектирование и монтаж иконостасов',
     description: 'Разрабатываем индивидуальные проекты иконостасов любой сложности — от компактных домашних до масштабных храмовых конструкций. Выполняем ручную резьбу, золочение, эмалирование и патинирование в строгом соответствии с церковными канонами.',
-    images: [] 
+    images: iconsList 
     },
     
 ])
