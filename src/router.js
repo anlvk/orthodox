@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from './views/HomeView.vue'
 import AboutView from './views/AboutView.vue'
-import ServicesView from './views/ServicesView.vue' // 1. Импортируем компонент контактов
+import ContactsView from './views/ContactsView.vue'
 
 const routes = [
   {
@@ -15,9 +15,10 @@ const routes = [
     component: AboutView
   },
   {
-    path: '/services', // 2. Задаем URL-адрес страницы
-    name: 'services',
-    component: ServicesView
+    path: '/contacts',
+    name: 'contacts',
+    // Ленивая загрузка (Lazy Loading) — компонент загрузится только при переходе на страницу
+    component: ContactsView
   }
 ]
 
