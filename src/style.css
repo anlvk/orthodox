@@ -1,3 +1,10 @@
+/* Применяем шрифт по умолчанию ко всему сайту */
+body, html, #app {
+  font-family: 'Montserrat', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 :root {
   --bg-color: #f4f1ea;
   --text-dark: #2c302e;
@@ -10,7 +17,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
