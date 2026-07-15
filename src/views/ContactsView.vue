@@ -8,7 +8,7 @@
         <div class="contacts-info">
           <p><strong>Руководитель:</strong> Дмитрий Олегович Левчук</p>
           <p><strong>Мастерская:</strong> абрис Ikon (иконопись, роспись и проектирование храмов)</p>
-          <p><strong>Телефон / WhatsApp:</strong> +375447286426</p>
+          <p><strong>Телефон / Telegram:</strong> +375447286426</p>
           <p><strong>Instagram:</strong> <a href="https://www.instagram.com/abris_icon">abris_icon</a></p>
         </div>
 
